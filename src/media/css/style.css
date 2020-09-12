@@ -1,0 +1,38 @@
+/*  -------------- Navbar Style ------------------- */
+
+
+.header{
+    display: flex;
+    justify-content: center;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+.navbar-ul{
+    list-style-type: none; 
+}
+.navbar-ul{
+    display: flex;
+}
+a{
+    text-decoration-line: none;
+}
+
+/*  -------------- Input Style ------------------- */
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+}
+.input{
+    border: 1px solid lightgray;
+    border-radius: 15px;
+    width: 300px;
+    background-color: transparent;
+    outline: none;
+    padding: 0.5rem 1rem;
+}
+
+
