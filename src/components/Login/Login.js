@@ -52,7 +52,7 @@ const Login = () => {
           value={credentials.email}
           onChange={handleValidation}
           error={credentials.emailError}
-          placeholder="Email"
+          placeholder="Email Address"
         />
         <Input
           type="password"
@@ -62,9 +62,9 @@ const Login = () => {
           error={credentials.passwordError}
           placeholder="Password"
         />
-        <button type= 'submit' className="sign-in"> SIGN IN</button>
+        <button type= 'submit' className="submit-form"> SIGN IN</button>
       </form>
-      <p style={{color:'#fff', marginBottom: '0.3rem',marginTop:'2.5rem'}}>Don't have an account yet ?</p>
+      <p style={{ marginBottom: '0.3rem',marginTop:'2.5rem'}}>Don't have an account yet ?</p>
         <Link to='/register'>Create an account</Link>
     </div>
   );
