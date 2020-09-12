@@ -1,57 +1,177 @@
 /*  -------------- Navbar Style ------------------- */
 
-
-.header{
-    display: flex;
-    justify-content: center;
+.header {
+  display: flex;
+  justify-content: center;
 }
-.navbar{
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
 }
-.navbar-ul{
-    list-style-type: none; 
+.navbar-ul {
+  list-style-type: none;
 }
-.navbar-ul{
-    display: flex;
+.navbar-ul {
+  display: flex;
 }
-a{
-    text-decoration-line: none;
+a {
+  text-decoration-line: none;
 }
 
 /*  -------------- Input Style ------------------- */
 
-.input-container{
-    display: flex;
-    flex-direction: column;
+.input-container {
+  display: flex;
+  flex-direction: column;
 }
-.input{
-    border: 1px solid lightgray;
-    border-radius: 15px;
-    width: 300px;
-    background-color: transparent;
-    outline: none;
-    padding: 0.5rem 1rem;
-    margin-top: 0.7rem;
+.input {
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  width: 300px;
+  background-color: transparent;
+  outline: none;
+  padding: 0.5rem 1rem;
+  margin-top: 0.7rem;
 }
 
 /*  -------------- Login Style ------------------- */
-.login-conatiner{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+.login-conatiner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .form {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.submit-form{
-    margin-top: 0.7rem;
-    padding: 0.5rem 0.8rem;
-    width: 100px;
-    border-radius: 15px;
-    border: none;
+.submit-form {
+  margin-top: 0.7rem;
+  padding: 0.5rem 0.8rem;
+  width: 100px;
+  border-radius: 15px;
+  border: none;
+  font-size: 16px;
+  color: white;
+  background-color: rgb(231, 162, 191);
+  outline: none;
+}
+.submit-form:hover {
+  background-color: rgb(228, 135, 173);
+}
+
+/*  -------------- Modal Style ------------------- */
+
+.button-modal {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 50%;
+  background-color: rgb(231, 162, 191);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+.button-modal:hover {
+  background-color: rgb(228, 135, 173);
+}
+.open-modal {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  text-align: center;
+  font-size: 38px;
+  color: darkgrey;
+  outline: none;
+}
+.write-msg {
+  position: absolute;
+  width: 160px;
+  right: 54px;
+  bottom: 50px;
+  background-color: lightgray;
+  border-radius: 15px 15px 0px 15px;
+  padding: 5px 5px;
+  display: none;
+  transition: all 0.5s ease-out;
+}
+
+.button-modal:hover .write-msg {
+  display: block;
+  transition: all 0.5s ease-out;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.4;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  transition: all 0.5s ease-out;
+}
+
+.modal {
+  position: fixed;
+  z-index: 20;
+  background: #fff;
+  max-width: 500px;
+  width: 80%;
+  border-radius: 15px;
+
+  /* Center the modal */
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  transition: all 0.5s ease-out;
+}
+
+.modal-header {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+.modal-title {
+  font-size: 24px;
+  margin: 0;
+  padding: 0.5rem;
+}
+.msg-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.text-area {
+  width: 80%;
+  border-radius: 5px;
+  height: 90px;
+  padding: 1rem;
+  border: 1px solid lightgrey;
+  outline: none;
+}
+
+.close-button {
+  border: none;
+  background: transparent;
+  padding: 10px;
+  cursor: pointer;
+  color: lightgray;
+  font-size: 36px;
+  outline: none;
+}
+
+.close-button:hover {
+  color: rgb(231, 162, 191);
 }
