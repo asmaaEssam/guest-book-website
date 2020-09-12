@@ -6,6 +6,7 @@ import Navbar from './components/Navbar/Navbar';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Modal from './components/Modal/Modal';
+import Message from './components/Message/Message'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Navbar/>
       <Route path='/login' component={Login} />
       <Route path='/register' component={Register} />
+      <Message/>
       <Modal/>
     </div>
   );
