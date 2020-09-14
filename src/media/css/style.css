@@ -1,5 +1,6 @@
-body{
-    background-color: rgb(245, 245, 245);
+body {
+  background-color: rgb(245, 245, 245);
+  font-family: "Italianno", cursive;
 }
 
 /*  -------------- Navbar Style ------------------- */
@@ -16,11 +17,30 @@ body{
 .navbar-ul {
   list-style-type: none;
 }
+.navbar-ul .nav-item {
+  padding: 5px;
+  margin-left: 5px;
+}
+
+.navbar-ul .nav-item a {
+  color: rgb(31, 29, 29);
+  font-size: 16px;
+}
+.navbar-ul .nav-item a:hover {
+  color: rgb(228, 135, 173);
+}
 .navbar-ul {
   display: flex;
 }
 a {
   text-decoration-line: none;
+}
+.logo-container h3 {
+  font-size: 32px;
+  color: darkblue;
+}
+.logo-container {
+  display: flex;
 }
 
 /*  -------------- Input Style ------------------- */
@@ -52,6 +72,15 @@ a {
   flex-direction: column;
   align-items: center;
 }
+.login-conatiner p {
+  margin-bottom: 0.3rem;
+  margin-top: 2.5rem;
+  font-family: "Vesper Libre", serif;
+}
+.login-conatiner a {
+  font-family: "Vesper Libre", serif;
+  color: darkblue;
+}
 .submit-form {
   margin-top: 0.7rem;
   padding: 0.5rem 0.8rem;
@@ -62,15 +91,25 @@ a {
   color: white;
   background-color: rgb(231, 162, 191);
   outline: none;
+  cursor: pointer;
 }
 .submit-form:hover {
   background-color: rgb(228, 135, 173);
 }
 
+.input-error {
+  align-self: flex-start;
+  margin-left: 12px;
+  color: red;
+  font-size: 12px;
+  font-family: auto;
+  margin-top: 5px;
+}
+
 /*  -------------- Modal Style ------------------- */
 
 .button-modal {
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   right: 20px;
   border-radius: 50%;
@@ -90,7 +129,7 @@ a {
   cursor: pointer;
   text-align: center;
   font-size: 38px;
-  color: darkgrey;
+  color: darkblue;
   outline: none;
 }
 .write-msg {
@@ -108,6 +147,9 @@ a {
 .button-modal:hover .write-msg {
   display: block;
   transition: all 0.5s ease-out;
+  font-size: 16px;
+  font-family: "Vesper Libre", serif;
+  color: darkblue;
 }
 
 .overlay {
@@ -181,61 +223,159 @@ a {
 }
 
 /*  -------------- Message Style ------------------- */
-
-.message{
-    border-radius: 15px;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    max-width: 500px;
-    width: 90%;
-    box-shadow: 0px 0px 7px 2px rgba(186,184,186,1);
+.msgs-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.user-section{
-    display: flex;
-    padding: 0.3rem;
-    align-items: center;
-    box-shadow: 0px 3px 2px -3px rgba(0,0,0,0.75)
+.message {
+  border-radius: 15px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0px 0px 7px 2px rgba(186, 184, 186, 1);
+  margin-bottom: 10px;
 }
-.user-img{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+.user-section {
+  display: flex;
+  padding: 0.3rem;
+  align-items: center;
+  box-shadow: 0px 3px 2px -3px rgba(0, 0, 0, 0.75);
 }
-.user-name{
-    margin: 0;
-    margin-left: 8px;
+.user-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
-.msg-body{
-    display: flex;
-    padding: 1rem;
+.user-name {
+  margin: 0;
+  margin-left: 8px;
+  font-family: cursive;
+  color: rgb(231, 162, 191);
 }
-.msg-body p{
-    margin: 0;
+.msg-body {
+  display: flex;
+  padding: 1rem;
 }
-.msg-footer{
-    align-self: flex-end;
-    padding: 0rem 1rem;
-    padding-bottom: 0.5rem;
+.msg-body p {
+  margin: 0;
+  text-align: start;
+  font-family: auto;
+  color: #03034a;
 }
-.msg-footer span{
-    font-size: 12px;
-    color: gray;
-    margin-right: 10px;
-    cursor: pointer;
+.msg-footer {
+  padding: 0rem 1rem;
+  padding-bottom: 0.5rem;
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+}
+.msg-footer span {
+  font-size: 12px;
+  color: gray;
+  margin-right: 10px;
+  cursor: pointer;
 }
 .msg-footer button {
-    border: none;
-    outline: none;
-    padding: 0.5rem 1rem;
-    border-radius: 15px;
-    cursor: pointer;
-    background-color: rgb(231, 162, 191);
-    color: white;
+  border: none;
+  outline: none;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: rgb(231, 162, 191);
+  color: white;
 }
 .msg-footer button:hover {
-    background-color: rgb(228, 135, 173);
+  background-color: rgb(228, 135, 173);
+}
+
+/*  -------------- Reply Style ------------------- */
+.reply-form {
+  width: 100%;
+}
+.reply-section {
+  width: 90%;
+  outline: none;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+
+/*  -------------- Home Style ------------------- */
+
+.marriage-details {
+  display: flex;
+  width: 90%;
+  justify-content: space-evenly;
+  padding: 2%;
+  flex-wrap: wrap;
+  margin: auto;
+}
+.groom-bride {
+  padding: 10px;
+  min-width: 220px;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.person-img {
+  border-radius: 50%;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.save-the-date {
+  padding: 10px;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  align-items: center;
+}
+.title {
+  color: rgb(231, 162, 191);
+}
+.day {
+  width: 90%;
+  background-color: lightseagreen;
+  color: white;
+  font-size: 30px;
+  border-radius: 30px;
+  border: 1px solid lightgrey;
+  padding: 0.5rem 0;
+}
+.rsvp-button {
+  width: 224px;
+  background-color: transparent;
+  border-radius: 30px;
+  border: 2px solid rgb(231, 162, 191);
+  margin-top: 1rem;
+  color: rgb(231, 162, 191);
+  cursor: pointer;
+  font-size: 47px;
+  font-family: "Italianno", cursive;
+  outline: none;
+}
+.rsvp-button:hover {
+  background-color: rgb(228, 135, 173);
+  color: #fff;
+}
+.address {
+  color: gray;
+  font-size: 25px;
+  padding: 1rem;
+  font-family: "Vesper Libre", serif;
+}
+.groom-bride p {
+  margin: 0;
+  color: lightseagreen;
+  font-family: "Vesper Libre", serif;
 }

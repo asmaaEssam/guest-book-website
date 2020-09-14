@@ -6,8 +6,8 @@ const Login = () => {
   const [credentials, setcredentials] = useState({
     email: "",
     password: "",
-    emailError: "",
-    passwordError: "",
+    emailError: false,
+    passwordError: false,
   });
   const handleValidation = (e) => {
     if (e.target.name === "email") {
@@ -15,13 +15,13 @@ const Login = () => {
         setcredentials({
           ...credentials,
           email: e.target.value,
-          emailError: "Invalid Email Address",
+          emailError: true,
         });
       } else {
         setcredentials({
           ...credentials,
           email: e.target.value,
-          emailError: "",
+          emailError: false,
         });
       }
     }
@@ -30,17 +30,32 @@ const Login = () => {
         setcredentials({
           ...credentials,
           password: e.target.value,
-          passwordError: "Password should be greater that 6 digits",
+          passwordError: true,
         });
       } else {
         setcredentials({
           ...credentials,
           password: e.target.value,
-          passwordError: "",
+          passwordError: false,
         });
       }
     }
   };
+  const baseUrl = process.env.BASEURL || "http://localhost:9000"
+  const  loginAPI = async (user) =>{
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify(user)
+  };
+  fetch(baseUrl + '/user/login',requestOptions)
+    .then(res => console.log(res))
+  }
+  const handleSubmit = e => {
+    e.preventDefault();
+    const user = {email: credentials.email, password: credentials.password}
+    loginAPI(user)
+  }
 
   return (
     <div className="login-conatiner">
@@ -51,20 +66,20 @@ const Login = () => {
           name="email"
           value={credentials.email}
           onChange={handleValidation}
-          error={credentials.emailError}
           placeholder="Email Address"
+          style={{border: credentials.emailError? '1px solid red': '1px solid lightgrey'}}
         />
         <Input
           type="password"
           name="password"
           value={credentials.password}
           onChange={handleValidation}
-          error={credentials.passwordError}
           placeholder="Password"
+          style={{border: credentials.passwordError? '1px solid red': '1px solid lightgrey'}}
         />
-        <button type= 'submit' className="submit-form"> SIGN IN</button>
+        <button type= 'submit' className="submit-form" onClick={handleSubmit}> SIGN IN</button>
       </form>
-      <p style={{ marginBottom: '0.3rem',marginTop:'2.5rem'}}>Don't have an account yet ?</p>
+      <p>Don't have an account yet ?</p>
         <Link to='/register'>Create an account</Link>
     </div>
   );
