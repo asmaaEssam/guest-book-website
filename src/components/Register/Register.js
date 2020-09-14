@@ -76,6 +76,8 @@ const Register = (props) => {
     }
   };
 
+  const baseUrl = process.env.BASEURL || "http://localhost:9000";
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
@@ -89,10 +91,19 @@ const Register = (props) => {
       credentials.confirmPasswordError === ''
 
     ) {
+    const user = {fullName: credentials.fullName,email: credentials.email, password: credentials.password}
+      const requestOptions = {
+        method: "POST",
+        redirect: 'follow',
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user),
+      };
+      fetch(baseUrl + "/user/register", requestOptions).then((res) =>{
+        console.log(res);
       props.history.push("/login");
+      });
     }
-    console.log("No")
-
   };
 
   return (
