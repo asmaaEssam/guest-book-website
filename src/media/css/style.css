@@ -180,9 +180,10 @@ a {
 }
 
 .modal-header {
+  position: relative;
   padding: 0.5rem;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 .modal-content {
@@ -214,8 +215,11 @@ a {
   padding: 10px;
   cursor: pointer;
   color: lightgray;
+  position: absolute;
   font-size: 36px;
   outline: none;
+  right: 10px;
+  top: 0;
 }
 
 .close-button:hover {
@@ -240,10 +244,15 @@ a {
   margin-bottom: 10px;
 }
 .user-section {
+  position: relative;
   display: flex;
   padding: 0.3rem;
   align-items: center;
   box-shadow: 0px 3px 2px -3px rgba(0, 0, 0, 0.75);
+}
+.user-section .close-button {
+  position: absolute;
+  right: 10px;
 }
 .user-img {
   display: flex;
@@ -282,7 +291,7 @@ a {
   margin-right: 10px;
   cursor: pointer;
 }
-.msg-footer button {
+.msg-footer .reply-button {
   border: none;
   outline: none;
   padding: 0.5rem 1rem;
@@ -291,19 +300,45 @@ a {
   background-color: rgb(231, 162, 191);
   color: white;
 }
-.msg-footer button:hover {
+.msg-footer .reply-button:hover {
   background-color: rgb(228, 135, 173);
+}
+.edit-button {
+  background-color: transparent;
+  border: none;
+  outline: nonr;
+  outline: none;
+  color: lightgray;
+  font-size: 18px;
+  position: absolute;
+  right: 44px;
 }
 
 /*  -------------- Reply Style ------------------- */
 .reply-form {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.reply-form button {
+  align-self: flex-end;
 }
 .reply-section {
   width: 90%;
   outline: none;
   border: 1px solid lightgray;
   border-radius: 10px;
+  padding: 1rem;
+  font-family: auto;
+  font-size: 16px;
+  color: #03034a;
+}
+.cancle {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: darkgray;
+  cursor: pointer;
 }
 
 /*  -------------- Home Style ------------------- */

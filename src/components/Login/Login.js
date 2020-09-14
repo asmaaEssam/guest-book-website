@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Input from "../Input/Input";
 
-const Login = () => {
+const Login = (props) => {
   const [credentials, setcredentials] = useState({
     email: "",
     password: "",
@@ -53,8 +53,9 @@ const Login = () => {
   }
   const handleSubmit = e => {
     e.preventDefault();
-    const user = {email: credentials.email, password: credentials.password}
-    loginAPI(user)
+    // const user = {email: credentials.email, password: credentials.password}
+    // loginAPI(user)
+    props.history.push('/')
   }
 
   return (

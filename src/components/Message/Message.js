@@ -1,93 +1,34 @@
 import React, { useState } from "react";
 import UserImg from "../../media/imgs/user.jpg";
 import ReplyForm from "../Reply/Reply";
-const Message = () => {
+const Message = ({userName,msgBody,msgReplies,msgId}) => {
   const [showReplyForm, setShowReplyForm] = useState(false);
-  const [msgs, setMsgs] = useState([
-    {
-      id: 1,
-      userName: "asmaa essam",
-      body:
-        "congratulations wish you all th best !!! congratulations wish you all th best !!! congratulations wish you all th best !!! congratulations wish you all th best !!!",
-      replies: [],
-    },
-    {
-      id: 2,
-      userName: "asmaa essam",
-      body: "congratulations wish you all th best !!!",
-      replies: [],
-    },
-    {
-      id: 3,
-      userName: "asmaa essam",
-      body: "congratulations wish you all th best !!!",
-      replies: [],
-    },
-    {
-        id: 2,
-        userName: "asmaa essam",
-        body: "congratulations wish you all th best !!!",
-        replies: [],
-      },
-      {
-        id: 3,
-        userName: "asmaa essam",
-        body: "congratulations wish you all th best !!!",
-        replies: [],
-      },
-      {
-        id: 2,
-        userName: "asmaa essam",
-        body: "congratulations wish you all th best !!!",
-        replies: [],
-      },
-      {
-        id: 3,
-        userName: "asmaa essam",
-        body: "congratulations wish you all th best !!!",
-        replies: [],
-      },
-      {
-        id: 2,
-        userName: "asmaa essam",
-        body: "congratulations wish you all th best !!!",
-        replies: [],
-      },
-      {
-        id: 3,
-        userName: "asmaa essam",
-        body: "congratulations wish you all th best !!!",
-        replies: [],
-      },
-  ]);
+
   return (
-    <div className="msgs-list">
-      {msgs.length ? (
-        msgs.map((msg) => (
-          <div className="message" key={msg.id}>
+          <div className="message" key={msgId}>
             <div className="user-section">
               <img className="user-img" src={UserImg} alt="" />
-              <p className="user-name">{msg.userName} </p>
+              <p className="user-name">{userName} </p>
+              <button
+                className="close-button"
+              >
+                &times;
+              </button>
+              <button className='edit-button'>&#9998;</button>
             </div>
             <div className="msg-body">
-              <p>{msg.body} </p>
+              <p>{msgBody} </p>
             </div>
             <div className="msg-footer">
-              {showReplyForm ? (
-                <ReplyForm />
-              ) : (
+              {!showReplyForm ? 
                 <>
-                  {msg.replies.length ? <span>show replies</span> : ""}
-                  <button onClick={() => setShowReplyForm(true)}>Reply</button>
-                </>
-              )}
+                  {msgReplies.length ? <span>show replies</span> : ""}
+                  <button className='reply-button' onClick={() => setShowReplyForm(true)}>Reply</button>
+                </>:""
+              }
+              {showReplyForm ? <ReplyForm setShowReplyForm = {setShowReplyForm} />:""}
             </div>
           </div>
-        ))
-      ) : (
-        <div>there is no Messages</div>
-      )}
-    </div>
   );
 };
 
