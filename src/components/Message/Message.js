@@ -5,7 +5,7 @@ const Message = ({userName,msgBody,msgReplies,msgId}) => {
   const [showReplyForm, setShowReplyForm] = useState(false);
 
   return (
-          <div className="message" key={msgId}>
+          <div className="message">
             <div className="user-section">
               <img className="user-img" src={UserImg} alt="" />
               <p className="user-name">{userName} </p>

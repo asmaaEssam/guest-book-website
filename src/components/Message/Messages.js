@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import Message from './Message'
-import UserImg from "../../media/imgs/user.jpg";
-import ReplyForm from "../Reply/Reply";
+
 const Messages = () => {
-  const [showReplyForm, setShowReplyForm] = useState(false);
   const [msgs, setMsgs] = useState([
     {
       id: 1,
@@ -64,7 +62,7 @@ const Messages = () => {
   return (
     <div className="msgs-list">
       {msgs.length ?
-        msgs.map((msg) => <Message userId={msg.id} userName={msg.userName} msgBody={msg.body} msgReplies={msg.replies} />) : (
+        msgs.map((msg) => <Message key={msg.id} userName={msg.userName} msgBody={msg.body} msgReplies={msg.replies} />) : (
         <div>there is no Messages</div>
       )}
     </div>

@@ -41,22 +41,30 @@ const Login = (props) => {
       }
     }
   };
-  const baseUrl = process.env.BASEURL || "http://localhost:9000"
-  const  loginAPI = async (user) =>{
+  const baseUrl = process.env.BASEURL || "http://localhost:9000";
+  const loginAPI = async (user) => {
     const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify(user)
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user),
+    };
+    fetch(baseUrl + "/user/login", requestOptions).then((res) =>
+      console.log(res)
+    );
   };
-  fetch(baseUrl + '/user/login',requestOptions)
-    .then(res => console.log(res))
-  }
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     // const user = {email: credentials.email, password: credentials.password}
     // loginAPI(user)
-    props.history.push('/')
-  }
+    if (
+      credentials.email !== "" &&
+      credentials.password !== "" &&
+      !credentials.emailError &&
+      !credentials.passwordError
+    ) {
+      props.history.push("/");
+    }
+  };
 
   return (
     <div className="login-conatiner">
@@ -68,7 +76,11 @@ const Login = (props) => {
           value={credentials.email}
           onChange={handleValidation}
           placeholder="Email Address"
-          style={{border: credentials.emailError? '1px solid red': '1px solid lightgrey'}}
+          style={{
+            border: credentials.emailError
+              ? "1px solid red"
+              : "1px solid lightgrey",
+          }}
         />
         <Input
           type="password"
@@ -76,12 +88,19 @@ const Login = (props) => {
           value={credentials.password}
           onChange={handleValidation}
           placeholder="Password"
-          style={{border: credentials.passwordError? '1px solid red': '1px solid lightgrey'}}
+          style={{
+            border: credentials.passwordError
+              ? "1px solid red"
+              : "1px solid lightgrey",
+          }}
         />
-        <button type= 'submit' className="submit-form" onClick={handleSubmit}> SIGN IN</button>
+        <button type="submit" className="submit-form" onClick={handleSubmit}>
+          {" "}
+          SIGN IN
+        </button>
       </form>
       <p>Don't have an account yet ?</p>
-        <Link to='/register'>Create an account</Link>
+      <Link to="/register">Create an account</Link>
     </div>
   );
 };

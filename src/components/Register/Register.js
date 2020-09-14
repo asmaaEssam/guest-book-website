@@ -2,32 +2,32 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Input from "../Input/Input";
 
-const Register = () => {
+const Register = (props) => {
   const [credentials, setcredentials] = useState({
     fullName: "",
     email: "",
     password: "",
-    confirmPassword:"",
-    fullNameError:"",
+    confirmPassword: "",
+    fullNameError: "",
     emailError: "",
     passwordError: "",
-    confirmPasswordError:""
+    confirmPasswordError: "",
   });
   const handleValidation = (e) => {
     if (e.target.name === "fullName") {
-        if (e.target.value === "" || e.target.value.length < 5) {
-          setcredentials({
-            ...credentials,
-            fullName: e.target.value,
-            fullNameError: "Full Name is Required",
-          });
-        } else {
-          setcredentials({
-            ...credentials,
-            fullName: e.target.value,
-            fullNameError: "",
-          });
-        }
+      if (e.target.value === "" || e.target.value.length < 5) {
+        setcredentials({
+          ...credentials,
+          fullName: e.target.value,
+          fullNameError: "Full Name is Required",
+        });
+      } else {
+        setcredentials({
+          ...credentials,
+          fullName: e.target.value,
+          fullNameError: "",
+        });
+      }
     }
     if (e.target.name === "email") {
       if (!/\S+@\S+\.\S+/.test(e.target.value)) {
@@ -60,20 +60,39 @@ const Register = () => {
       }
     }
     if (e.target.name === "confirmPassword") {
-        if (e.target.value !== credentials.password) {
-          setcredentials({
-            ...credentials,
-            confirmPassword: e.target.value,
-            confirmPasswordError: "Password doesn't match",
-          });
-        } else {
-          setcredentials({
-            ...credentials,
-            confirmPassword: e.target.value,
-            confirmPasswordError: "",
-          });
-        }
+      if (e.target.value !== credentials.password) {
+        setcredentials({
+          ...credentials,
+          confirmPassword: e.target.value,
+          confirmPasswordError: "Password doesn't match",
+        });
+      } else {
+        setcredentials({
+          ...credentials,
+          confirmPassword: e.target.value,
+          confirmPasswordError: "",
+        });
       }
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (
+      credentials.fullName !== '' &&
+      credentials.email !=='' &&
+      credentials.password !=='' &&
+      credentials.confirmPassword !=='' &&
+      credentials.fullNameError === ''&&
+      credentials.emailError === ''&&
+      credentials.passwordError === ''&&
+      credentials.confirmPasswordError === ''
+
+    ) {
+      props.history.push("/login");
+    }
+    console.log("No")
+
   };
 
   return (
@@ -112,10 +131,15 @@ const Register = () => {
           error={credentials.confirmPasswordError}
           placeholder="Confirm Password"
         />
-        <button type= 'submit' className="submit-form"> SIGN UP</button>
+        <button className="submit-form" onClick={handleSubmit}>
+          {" "}
+          SIGN UP
+        </button>
       </form>
-      <p style={{ marginBottom: '0.3rem',marginTop:'2.5rem'}}>Already have an account ?</p>
-        <Link to='/login'>Sign In</Link>
+      <p style={{ marginBottom: "0.3rem", marginTop: "2.5rem" }}>
+        Already have an account ?
+      </p>
+      <Link to="/login">Sign In</Link>
     </div>
   );
 };
